@@ -1,0 +1,16 @@
+.assert {
+    width: 350px;
+    margin: 5px;
+    padding: 10px;
+    background-color: wheat;
+    border-radius: 10px;
+    list-style-type: none;
+}
+
+.pass {
+    color: green;
+}
+
+.fail {
+    color: red;
+}
