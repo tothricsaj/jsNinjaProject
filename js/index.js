@@ -18,4 +18,15 @@ function skulk() {
 
 skulk()
 
+
+function foo() {
+    if(true) {
+        var fooBar = 'fooBar'
+    }
+
+    assert(fooBar === 'fooBar', 'This is owing to var keyword!')
+}
+
+foo()
+
 console.log('index js is loaded')
