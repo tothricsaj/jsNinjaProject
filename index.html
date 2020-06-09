@@ -10,5 +10,15 @@
     fooBar
     <ul id="result"></ul>
     <script src="index.js"></script>
+    <script>
+        assert(typeof fun === 'function', 'We access the function')
+
+        var fun = 3
+
+        assert(typeof funn === 'number', 'Now we access the number')
+
+        function fun() {}
+        assert(typeof funn === 'number', 'Still number')
+    </script>
 </body>
 </html>
