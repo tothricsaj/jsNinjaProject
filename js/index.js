@@ -1,32 +1,12 @@
 import { assert } from './assertion/assert.js'
 
-var ninja = 'Muneyoshi'
+assert(typeof fun === 'function', 'We access the function')
 
-function skulk() {
-    var action = 'Skulking'
+var fun = 3
 
-    function report() {
-        var intro = 'Aha!'
+assert(typeof funn === 'number', 'Now we access the number')
 
-        assert(intro === 'Aha!', 'Local')
-        assert(action === 'Skulking', 'Outer')
-        assert(ninja === 'Muneyoshi', 'Global')
-    }
-
-    report()
-}
-
-skulk()
-
-
-function foo() {
-    if(true) {
-        var fooBar = 'fooBar'
-    }
-
-    assert(fooBar === 'fooBar', 'This is owing to var keyword!')
-}
-
-foo()
+function fun() {}
+assert(typeof funn === 'number', 'Still number')
 
 console.log('index js is loaded')
