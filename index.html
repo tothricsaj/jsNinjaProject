@@ -17,12 +17,14 @@
             yield 'Kusarigama'
         }
 
-        console.log(WeaponGenerator().next())
-        // assert(WeaponGenerator() !== 'Katana', 'no Katana')
-        for(let weapon of WeaponGenerator()) {
-            console.log(weapon)
-            assert(weapon !== undefined, weapon)
-        }
+        const weaponIterator = WeaponGenerator()
+        const result1 = weaponIterator.next()
+        assert(
+            typeof result1 === 'object'
+            && result1.value === 'Katana'
+            && !result1.done,
+            "Katana recived!"
+        )
     </script>
 </body>
 </html>
