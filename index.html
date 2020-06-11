@@ -11,16 +11,18 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
+        function* WeaponGenerator() {
+            yield 'Katana'
+            yield 'Wakizashi'
+            yield 'Kusarigama'
+        }
 
-        assert(typeof fun === 'function', 'We access the function')
-
-        var fun = 3
-        assert(typeof fun === 'number', 'Now we access the number')
-
-        function fun() {}
-
-        console.log(typeof fun)
-        assert(typeof fun === 'number', 'Still number')
+        console.log(WeaponGenerator().next())
+        // assert(WeaponGenerator() !== 'Katana', 'no Katana')
+        for(let weapon of WeaponGenerator()) {
+            console.log(weapon)
+            assert(weapon !== undefined, weapon)
+        }
     </script>
 </body>
 </html>
