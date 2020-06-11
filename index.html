@@ -8,17 +8,29 @@
 </head>
 <body>
     <ul id="result"></ul>
+
+    <div id="subTree">
+        <form>
+            <input type="text"/>
+        </form>
+        <p>Paragraph</p>
+        <span>Span</span>
+    </div>
+
     <script src="index.js"></script>
     <script>
-        function* WeaponGenerator() {
-            yield 'Katana'
-            yield 'Wakizashi'
-            yield 'Kusarigama'
+        function* DOMTraversal(element) {
+            yield element
+            element = element.firstElementChild
+            while(element) {
+                yield* DOMTraversal(element)
+                element = element.nextElementSibling
+            }
         }
 
-        const weaponIterator = WeaponGenerator()
-        while(!(item = weaponIterator.next()).done) {
-            assert(item !== null, item.value)
+        const subTree = document.getElementById("subTree")
+        for(let element of DOMTraversal(subTree)) {
+            assert(element !== null, element.nodeName)
         }
     </script>
 </body>
