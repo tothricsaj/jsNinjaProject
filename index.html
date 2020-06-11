@@ -7,7 +7,6 @@
     <title>jsNinjaProject</title>
 </head>
 <body>
-    fooBar
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
@@ -18,13 +17,9 @@
         }
 
         const weaponIterator = WeaponGenerator()
-        const result1 = weaponIterator.next()
-        assert(
-            typeof result1 === 'object'
-            && result1.value === 'Katana'
-            && !result1.done,
-            "Katana recived!"
-        )
+        while(!(item = weaponIterator.next()).done) {
+            assert(item !== null, item.value)
+        }
     </script>
 </body>
 </html>
