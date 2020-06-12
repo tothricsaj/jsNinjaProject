@@ -27,8 +27,8 @@
 
         function* FooGenerator(val) {
             const foo = yield ('1 ' + val)
-            yield (`2 ${foo}`)
-            yield (`3 ${foo}`)
+            const bar = yield (`2 ${foo}`)
+            yield (`3 ${bar}`)
         }
 
         const fooIterator = FooGenerator('foo')
