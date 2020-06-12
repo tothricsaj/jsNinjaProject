@@ -1,3 +1,14 @@
+/** 
+ * <div id="subTree">
+        <form>
+            <input type="text"/>
+        </form>
+        <p>Paragraph</p>
+        <span>Span</span>
+    </div>
+
+*/
+
 function* DOMTraversal(element) {
     yield element
     element = element.firstElementChild

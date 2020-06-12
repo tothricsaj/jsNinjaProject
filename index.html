@@ -8,15 +8,6 @@
 </head>
 <body>
     <ul id="result"></ul>
-
-    <div id="subTree">
-        <form>
-            <input type="text"/>
-        </form>
-        <p>Paragraph</p>
-        <span>Span</span>
-    </div>
-
     <script src="index.js"></script>
     <script>
         function* NinjaGenarator(action) {
@@ -27,12 +18,31 @@
         }
 
         const ninjaIterator = NinjaGenarator('skulk')
+
         const result1 = ninjaIterator.next()
-        console.log(result1.value)
         assert(result1.value === 'Hattori skulk', 'Hattori is skulking')
 
         const result2 = ninjaIterator.next('Hanzo')
         assert(result2.value === 'Yoshi (Hanzo) skulk', 'We hava a imposter')
+
+        function* FooGenerator(val) {
+            const foo = yield ('1 ' + val)
+            yield (`2 ${foo}`)
+            yield (`3 ${foo}`)
+        }
+
+        const fooIterator = FooGenerator('foo')
+
+        const foo = fooIterator.next()
+        assert(foo.value === '1 foo', 'foo is ok')
+
+        const bar = fooIterator.next('bar')
+        assert(bar.value === '2 bar', 'bar is ok')
+
+        const baz = fooIterator.next('baz')
+        assert(baz.value === '3 baz', 'baz is ok')
+
+        console.log(foo, bar, baz)
     </script>
 </body>
 </html>
