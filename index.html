@@ -19,19 +19,20 @@
 
     <script src="index.js"></script>
     <script>
-        function* DOMTraversal(element) {
-            yield element
-            element = element.firstElementChild
-            while(element) {
-                yield* DOMTraversal(element)
-                element = element.nextElementSibling
-            }
+        function* NinjaGenarator(action) {
+            const imposter = yield ('Hattori ' + action)
+
+            assert(imposter === 'Hanzo', 'The generator has been infiltrated')
+            yield (`Yoshi (${imposter}) ${action}`)
         }
 
-        const subTree = document.getElementById("subTree")
-        for(let element of DOMTraversal(subTree)) {
-            assert(element !== null, element.nodeName)
-        }
+        const ninjaIterator = NinjaGenarator('skulk')
+        const result1 = ninjaIterator.next()
+        console.log(result1.value)
+        assert(result1.value === 'Hattori skulk', 'Hattori is skulking')
+
+        const result2 = ninjaIterator.next('Hanzo')
+        assert(result2.value === 'Yoshi (Hanzo) skulk', 'We hava a imposter')
     </script>
 </body>
 </html>
