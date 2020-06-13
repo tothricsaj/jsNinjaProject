@@ -10,6 +10,15 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
+        const ninjaPromise = new Promise((resolve, reject) => {
+            resolve('Hattori')
+        })
+
+        ninjaPromise.then(ninja => {
+            assert(ninja === 'Hattori', 'We were proised Hattori!')
+        }, err => {
+            console.warn('There shouldnt be an error')
+        })
     </script>
 </body>
 </html>
