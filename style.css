@@ -14,3 +14,8 @@
 .fail {
     color: red;
 }
+
+.report {
+    color: tomato;
+    font-style: italic;
+}
