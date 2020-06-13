@@ -11,6 +11,8 @@
     <script src="index.js"></script>
     <script>
         report('Start at the code!')
+        fail('Fail test')
+        pass('pass test')
         var ninjaDelayedPromise = new Promise((resolve, reject) => {
             report('ninjaDelayedPromise executor')
             setTimeout(() => {
