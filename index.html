@@ -10,15 +10,18 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
-        const ninjaPromise = new Promise((resolve, reject) => {
-            console.log('Promise is called')
-            resolve('Hattori')
+        report('Start at the code!')
+        var ninjaDelayedPromise = new Promise((resolve, reject) => {
+            report('ninjaDelayedPromise executor')
+            setTimeout(() => {
+                report('Resolving ninjaDeleyedPromise')
+                resolve('Hattori')
+            }, 1500)
         })
 
-        ninjaPromise.then(ninja => {
-            assert(ninja === 'Hattori', 'We were proised Hattori!')
-        }, err => {
-            console.warn('There shouldnt be an error')
+        assert(ninjaDelayedPromise !== null, 'After creating ninjaDelayedProise')
+        ninjaDelayedPromise.then(ninja => {
+            assert(ninja === 'Hattori', 'resolved handled with Hattori')
         })
     </script>
 </body>
