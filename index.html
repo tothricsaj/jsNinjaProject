@@ -11,20 +11,12 @@
     <script src="index.js"></script>
     <script>
         report('Start at the code!')
-        fail('Fail test')
-        pass('pass test')
-        var ninjaDelayedPromise = new Promise((resolve, reject) => {
-            report('ninjaDelayedPromise executor')
-            setTimeout(() => {
-                report('Resolving ninjaDeleyedPromise')
-                resolve('Hattori')
-            }, 1500)
+        const promise = new Promise((resolve, reject) => {
+            reject("Explicitly reject a promise!")
         })
 
-        assert(ninjaDelayedPromise !== null, 'After creating ninjaDelayedProise')
-        ninjaDelayedPromise.then(ninja => {
-            assert(ninja === 'Hattori', 'resolved handled with Hattori')
-        })
+        promise.then(() => fail('Happy path, wont be called!'))
+        .catch(() => pass('promise was rejected!'))
     </script>
 </body>
 </html>
