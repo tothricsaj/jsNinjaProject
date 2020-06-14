@@ -10,13 +10,29 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
-        report('Start at the code!')
-        const promise = new Promise((resolve, reject) => {
-            reject("Explicitly reject a promise!")
+        let hattori = new Promise((resolve, reject) => {
+            report('In the hattori')
+            setTimeout(() => resolve('Hattori'), 1000)
         })
 
-        promise.then(() => fail('Happy path, wont be called!'))
-        .catch(() => pass('promise was rejected!'))
+        let yoshi = new Promise((resolve, reject) => {
+            report('In the yoshi')
+            setTimeout(() => resolve('Yoshi'), 1700)
+        })
+
+        let yaghi = new Promise((resolve, reject) => {
+            report('In the yaghi')
+            setTimeout(() => resolve('Yaghi'), 2700)
+        })
+
+        Promise.all([
+            hattori.then(res => res + ' Hanzo'),
+            yoshi.then(res => res + ' Mitshu'),
+            yaghi
+        ]).then(result => {
+            assert(result !== null, result)
+        }).catch(e => fail('Something went wrong!'))
+
     </script>
 </body>
 </html>
