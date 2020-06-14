@@ -12,20 +12,29 @@
     <script>
         let hattori = new Promise((resolve, reject) => {
             report('In the hattori')
-            setTimeout(() => resolve('Hattori'), 1000)
+            setTimeout(() => {
+                resolve('Hattori')
+                pass('Hattori in the finish')
+            }, 3000)
         })
 
         let yoshi = new Promise((resolve, reject) => {
             report('In the yoshi')
-            setTimeout(() => resolve('Yoshi'), 1700)
+            setTimeout(() => {
+                resolve('Yoshi')
+                pass('Yoshi in the finish')
+            }, 1700)
         })
 
         let yaghi = new Promise((resolve, reject) => {
             report('In the yaghi')
-            setTimeout(() => resolve('Yaghi'), 2700)
+            setTimeout(() => {
+                resolve('Yaghi')
+                pass('Yaghi in the finish')
+            }, 2700)
         })
 
-        Promise.all([
+        Promise.race([
             hattori.then(res => res + ' Hanzo'),
             yoshi.then(res => res + ' Mitshu'),
             yaghi
