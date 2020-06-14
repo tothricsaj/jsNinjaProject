@@ -10,37 +10,13 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
-        let hattori = new Promise((resolve, reject) => {
-            report('In the hattori')
-            setTimeout(() => {
-                resolve('Hattori')
-                pass('Hattori in the finish')
-            }, 3000)
+        const promise = new Promise((resolve, reject) => {
+            resolve('Hattori')
+            setTimeout(() => reject('Yoshi'), 1000)
         })
 
-        let yoshi = new Promise((resolve, reject) => {
-            report('In the yoshi')
-            setTimeout(() => {
-                resolve('Yoshi')
-                pass('Yoshi in the finish')
-            }, 1700)
-        })
-
-        let yaghi = new Promise((resolve, reject) => {
-            report('In the yaghi')
-            setTimeout(() => {
-                resolve('Yaghi')
-                pass('Yaghi in the finish')
-            }, 2700)
-        })
-
-        Promise.race([
-            hattori.then(res => res + ' Hanzo'),
-            yoshi.then(res => res + ' Mitshu'),
-            yaghi
-        ]).then(result => {
-            assert(result !== null, result)
-        }).catch(e => fail('Something went wrong!'))
+        promise.then(val => assert(val === 'Hattori', 'Hattori arrived!'))
+            .catch(e => fail(e))
 
     </script>
 </body>
