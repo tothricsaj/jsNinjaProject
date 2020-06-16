@@ -10,14 +10,16 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
-        const promise = new Promise((resolve, reject) => {
-            resolve('Hattori')
-            setTimeout(() => reject('Yoshi'), 1000)
-        })
+        function Ninja() {
+            this.swung = false
+            this.swingSword = function() {return !this.swung}
+        }
 
-        promise.then(val => assert(val === 'Hattori', 'Hattori arrived!'))
-            .catch(e => fail(e))
+        Ninja.prototype.swingSword = function() {return this.swung}
 
+        const ninja = new Ninja()
+        assert(ninja.swingSword(), 'Called the instande method')
+        assert(Ninja.prototype.swingSword(), 'Called the prototype')
     </script>
 </body>
 </html>
