@@ -10,27 +10,17 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
-        function Ninja() {
-            this.swung = true
-        }
+        function Person() {}
+        Person.prototype.dance = function() {}
 
-        const ninja1 = new Ninja()
+        function Ninja() {}
+        Ninja.prototype = new Person
 
-        Ninja.prototype.swingSword = function() {return this.swung}
+        const ninja = new Ninja()
 
-        assert(ninja1.swingSword(), 'Method exists!')
-
-        Ninja.prototype = {
-            pierce: function() {return true}
-        }
-
-        assert(ninja1.swingSword(), 'Our ninja can still swing!')
-
-        const ninja2 = new Ninja()
-
-        assert(ninja2.pierce(), 'Newly created ninjas can pierce')
-        assert(ninja2.swingSword, 'But they cannot swing!')
-
-        </script>
+        assert(ninja instanceof Ninja, 'ninja is Ninja :D')
+        assert(ninja instanceof Person, 'Supriseingly, ninja ia a Person')
+        assert(typeof ninja.dance === 'function', 'ninja can dance!')
+    </script>
 </body>
 </html>
