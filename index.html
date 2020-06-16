@@ -11,15 +11,26 @@
     <script src="index.js"></script>
     <script>
         function Ninja() {
-            this.swung = false
-            // this.swingSword = function() {return !this.swung}
+            this.swung = true
         }
+
+        const ninja1 = new Ninja()
 
         Ninja.prototype.swingSword = function() {return this.swung}
 
-        const ninja = new Ninja()
-        assert(ninja.swingSword(), 'Called the instande method')
-        // assert(Ninja.prototype.swingSword(), 'Called the prototype')
-    </script>
+        assert(ninja1.swingSword(), 'Method exists!')
+
+        Ninja.prototype = {
+            pierce: function() {return true}
+        }
+
+        assert(ninja1.swingSword(), 'Our ninja can still swing!')
+
+        const ninja2 = new Ninja()
+
+        assert(ninja2.pierce(), 'Newly created ninjas can pierce')
+        assert(ninja2.swingSword, 'But they cannot swing!')
+
+        </script>
 </body>
 </html>
