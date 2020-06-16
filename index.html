@@ -12,14 +12,14 @@
     <script>
         function Ninja() {
             this.swung = false
-            this.swingSword = function() {return !this.swung}
+            // this.swingSword = function() {return !this.swung}
         }
 
         Ninja.prototype.swingSword = function() {return this.swung}
 
         const ninja = new Ninja()
         assert(ninja.swingSword(), 'Called the instande method')
-        assert(Ninja.prototype.swingSword(), 'Called the prototype')
+        // assert(Ninja.prototype.swingSword(), 'Called the prototype')
     </script>
 </body>
 </html>
