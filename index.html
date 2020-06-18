@@ -10,7 +10,28 @@
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
+        const emperor = {
+            name: 'Komei'
+        }
 
+        const representative = new Proxy(emperor, {
+            get: (target, key) => {
+                report(`Reading ${key} through a proxy`)
+                return key in target ? target[key]
+                                     : 'Dont bother the emperor'
+            },
+            set: (target, key, value) => {
+                report(`Writing ${key} through a proxy`)
+                target[key] = value
+            }
+        })
+
+        assert(emperor.name === 'Komei', 'Komei is the emperor!')
+        assert(representative.name === 'Komei', 'We can get the name through proxy!')
+
+        representative.nickname = 'Tenno'
+
+        assert(emperor.nickname === 'Tenno', 'Changed the object!')
     </script>
 </body>
 </html>
