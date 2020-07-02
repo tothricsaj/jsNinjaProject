@@ -4,34 +4,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./style.css">
+
+    <style>
+        .outherDiv {width: 400px; height: 400px;background-color: lightblue;}
+        .innerDiv {width: 200px; height: 200px;background-color: lightcoral;}
+    </style>
+
     <title>jsNinjaProject</title>
 </head>
 <body>
+    <div class="outherDiv">
+        <div class="innerDiv"></div>
+    </div>
     <ul id="result"></ul>
     <script src="index.js"></script>
     <script>
-        const emperor = {
-            name: 'Komei'
-        }
+        let outherDiv = document.querySelector('.outherDiv')
+        let innerDiv = document.querySelector('.innerDiv')
 
-        const representative = new Proxy(emperor, {
-            get: (target, key) => {
-                report(`Reading ${key} through a proxy`)
-                return key in target ? target[key]
-                                     : 'Dont bother the emperor'
-            },
-            set: (target, key, value) => {
-                report(`Writing ${key} through a proxy`)
-                target[key] = value
-            }
-        })
-
-        assert(emperor.name === 'Komei', 'Komei is the emperor!')
-        assert(representative.name === 'Komei', 'We can get the name through proxy!')
-
-        representative.nickname = 'Tenno'
-
-        assert(emperor.nickname === 'Tenno', 'Changed the object!')
+        document.addEventListener('click', (e) => console.log(e))
+        outherDiv.addEventListener('click', (e) => console.log(e))
+        innerDiv.addEventListener('click', (e) => console.log(e))
     </script>
 </body>
 </html>
