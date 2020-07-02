@@ -22,9 +22,23 @@
         let outherDiv = document.querySelector('.outherDiv')
         let innerDiv = document.querySelector('.innerDiv')
 
-        document.addEventListener('click', (e) => console.log(e))
-        outherDiv.addEventListener('click', (e) => console.log(e))
-        innerDiv.addEventListener('click', (e) => console.log(e))
+        const event = new Event('EndOfTheLoop')
+
+        innerDiv.addEventListener('EndOfTheLoop', (e) => {
+            innerDiv.style.backgroundColor = 'orange'
+            console.log('My event is dispathced')
+        })
+
+        document.addEventListener('click', (e) => console.log(e.target))
+        outherDiv.addEventListener('click', (e) => console.log(e.target))
+        innerDiv.addEventListener('click', (e) => {
+            e.stopPropagation()
+            console.log(e.target)
+        })
+
+        for(let i=0; i<100000; i++) {
+            if(i === 99999) innerDiv.dispatchEvent(event)
+        }
     </script>
 </body>
 </html>
